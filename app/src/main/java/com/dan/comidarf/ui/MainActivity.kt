@@ -12,6 +12,7 @@ import com.dan.comidarf.R
 import com.dan.comidarf.data.ComidaRepository
 import com.dan.comidarf.data.remote.RetrofitHelper
 import com.dan.comidarf.databinding.ActivityMainBinding
+import com.dan.comidarf.ui.fragments.ComidaListFragment
 import com.dan.comidarf.utils.Constants
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
@@ -34,28 +35,13 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-/*
-        retrofit = RetrofitHelper().getRetrofit()
-        repository = ComidaRepository(retrofit)
 
-        lifecycleScope.launch {
-            try {
+        if(savedInstanceState == null){
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, ComidaListFragment())
+                .commit()
 
-                /*
-                val comidas = repository.getComidas()
-                Log.d(Constants.LOGTAG, "onCreate: $comidas")*/
+        }
 
-                print("mensaje para separar")
-
-                val comida = repository.getComidaDetail("1006")
-                Log.d(Constants.LOGTAG, "onCreate: $comida")
-
-            } catch (e: Exception) {
-                e.printStackTrace()
-                Toast.makeText(this@MainActivity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
-            }
-
-
-        }*/
     }
 }

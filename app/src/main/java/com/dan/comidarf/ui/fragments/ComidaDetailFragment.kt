@@ -1,27 +1,38 @@
 package com.dan.comidarf.ui.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import com.dan.comidarf.R
+import com.dan.comidarf.application.ComidaRFApp
+import com.dan.comidarf.data.ComidaRepository
+import com.dan.comidarf.databinding.FragmentComidaDetailBinding
+import com.dan.comidarf.utils.Constants
+import com.squareup.picasso.Picasso
+import kotlinx.coroutines.launch
 
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+private const val ARG_COMIDAID = "id"
+
 
 
 class ComidaDetailFragment : Fragment() {
+    private var _binding: FragmentComidaDetailBinding? = null
+    private val binding get() = _binding!!
 
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var repository: ComidaRepository
+
+    private var comidaId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            comidaId = it.getString(ARG_COMIDAID)
         }
     }
 
@@ -29,18 +40,48 @@ class ComidaDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_comida_detail, container, false)
+
+        _binding = FragmentComidaDetailBinding.inflate(inflater,container,false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        repository = (requireActivity().application as ComidaRFApp).repository
+
+        lifecycleScope.launch {
+            try {
+                val comidaDetail = repository.getComidaDetail(comidaId!!)
+                binding.apply {
+                    tvTitle.text = comidaDetail.title
+                    tvLongDesc.text = comidaDetail.longDesc
+                    tvOrigin.text = comidaDetail.originCountry
+                    tvPrice.text = comidaDetail.price.toString()
+                    tvCategory.text = comidaDetail.category
+                    Picasso.get().load(comidaDetail.image).into(ivImage)
+                }
+
+            }catch (e: Exception){
+             Toast.makeText(requireActivity(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+            }finally {
+                binding.pbLoading.visibility = View.GONE
+            }
+        }
+
+
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
     companion object {
 
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(id: String) =
             ComidaDetailFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putString(ARG_COMIDAID, id)
                 }
             }
     }
