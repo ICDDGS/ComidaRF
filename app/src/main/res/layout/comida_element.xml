@@ -45,7 +45,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline8"
         app:layout_constraintTop_toTopOf="@+id/guideline7"
-        tools:text="Title" />
+        tools:text="@string/title" />
 
 
     <TextView
@@ -57,7 +57,7 @@
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/ubuntu"
         android:includeFontPadding="false"
-        android:text="Comida"
+        android:text="@string/comida"
         android:textColor="#3FE0DD"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="@id/guideline5"
@@ -74,7 +74,7 @@
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/ubuntu"
         android:includeFontPadding="false"
-        android:text="Origen:"
+        android:text="@string/origen"
         android:textColor="#4A5B82"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -91,7 +91,7 @@
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/ubuntu"
         android:includeFontPadding="false"
-        android:text="Pais"
+        android:text="@string/country_origin"
         android:textColor="#F5DC53"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"

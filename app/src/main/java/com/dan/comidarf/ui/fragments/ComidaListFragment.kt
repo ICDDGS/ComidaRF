@@ -49,7 +49,6 @@ class ComidaListFragment : Fragment() {
                 binding.rvComida.apply {
                     layoutManager = LinearLayoutManager(requireContext())
                     adapter = ComidasAdapter(comidas){ selectedComida ->
-                        //Log.d(Constants.LOGTAG, "Clicked: $selectedComida")
                         selectedComida.id?.let {id ->
                             requireActivity().supportFragmentManager.beginTransaction()
                                 .replace(

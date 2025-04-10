@@ -1,5 +1,7 @@
 package com.dan.comidarf.ui.fragments
 
+import android.graphics.text.LineBreaker
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -59,6 +61,11 @@ class ComidaDetailFragment : Fragment() {
                     tvPrice.text = comidaDetail.price.toString()
                     tvCategory.text = comidaDetail.category
                     Picasso.get().load(comidaDetail.image).into(ivImage)
+
+                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
+                        tvLongDesc.justificationMode = LineBreaker.JUSTIFICATION_MODE_INTER_WORD
+                    }
+
                 }
 
             }catch (e: Exception){

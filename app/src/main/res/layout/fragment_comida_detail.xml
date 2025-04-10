@@ -61,7 +61,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Origin"
+                            android:text="@string/origen"
                             android:fontFamily="@font/ubuntu_bold"
                             android:padding="15dp"
                             android:textColor="@color/white"
@@ -77,7 +77,7 @@
                             android:padding="15dp"
                             android:textColor="@color/white"
                             android:textSize="12sp"
-                            tools:text="Origin" />
+                            tools:text="@string/origen" />
 
                         <TextView
                             android:layout_width="0dp"
@@ -87,7 +87,7 @@
                             android:padding="15dp"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-                            android:text="Category" />
+                            android:text="@string/category" />
 
                         <TextView
                             android:id="@+id/tvCategory"
@@ -98,7 +98,7 @@
                             android:padding="15dp"
                             android:textColor="@color/white"
                             android:textSize="12sp"
-                            tools:text="Category" />
+                            tools:text="@string/category" />
                     </LinearLayout>
 
                     <!-- Precio -->
@@ -116,7 +116,7 @@
                             android:textColor="@color/white"
                             android:textSize="15sp"
                             android:gravity="end"
-                            android:text="Price" />
+                            android:text="@string/price" />
 
                         <TextView
                             android:id="@+id/tvPrice"
@@ -128,7 +128,7 @@
                             android:textColor="@color/white"
                             android:textSize="12sp"
                             android:gravity="start"
-                            tools:text="price" />
+                            tools:text="@string/price" />
                     </LinearLayout>
 
                     <!-- Descripción -->
@@ -139,7 +139,7 @@
                         android:padding="15dp"
                         android:textColor="@color/white"
                         android:textSize="20sp"
-                        android:text="Description" />
+                        android:text="@string/description" />
 
                     <TextView
                         android:id="@+id/tvLongDesc"
@@ -149,7 +149,7 @@
                         android:padding="15dp"
                         android:textColor="@color/white"
                         android:textSize="20sp"
-                        tools:text="Description" />
+                        tools:text="@string/description" />
                 </LinearLayout>
             </ScrollView>
 

@@ -19,9 +19,7 @@ import retrofit2.Retrofit
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    /*
-    private lateinit var retrofit: Retrofit
-    private lateinit var repository: ComidaRepository*/
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
