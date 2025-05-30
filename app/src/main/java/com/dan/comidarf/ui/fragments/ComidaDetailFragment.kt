@@ -62,11 +62,23 @@ class ComidaDetailFragment : Fragment() {
                     tvCategory.text = comidaDetail.category
                     Picasso.get().load(comidaDetail.image).into(ivImage)
 
-                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                         tvLongDesc.justificationMode = LineBreaker.JUSTIFICATION_MODE_INTER_WORD
                     }
 
+                    val youTubePlayerView = youtubePlayerView
+                    lifecycle.addObserver(youTubePlayerView)
+
+                    youTubePlayerView.addYouTubePlayerListener(
+                        object : com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener() {
+                            override fun onReady(youTubePlayer: com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer) {
+                                val videoId = extractYoutubeId(comidaDetail.video_url)
+                                youTubePlayer.loadVideo(videoId, 0f)
+                            }
+                        }
+                    )
                 }
+
 
             }catch (e: Exception){
              Toast.makeText(requireActivity(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
@@ -74,6 +86,7 @@ class ComidaDetailFragment : Fragment() {
                 binding.pbLoading.visibility = View.GONE
             }
         }
+
 
 
     }
@@ -92,4 +105,11 @@ class ComidaDetailFragment : Fragment() {
                 }
             }
     }
+    fun extractYoutubeId(url: String): String {
+        val regex = Regex("(?:v=|be/)([a-zA-Z0-9_-]{11})")
+        val match = regex.find(url)
+        return match?.groups?.get(1)?.value ?: ""
+    }
+
+
 }

@@ -15,6 +15,8 @@ data class ComidaDetailDto(
     var originCountry: String? = null,
     @SerializedName("price")
     var price: String? = null,
+    @SerializedName("video_url")
+    val video_url: String
 
 
 )

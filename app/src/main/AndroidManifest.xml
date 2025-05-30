@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" /> <!-- Permiso para acceder al estado de la red -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+
     <application
         android:name=".application.ComidaRFApp"
         android:allowBackup="true"
@@ -17,6 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ComidaRF"
         tools:targetApi="31">
+        <service android:name=".services.MusicService" />
         <activity
             android:name=".ui.SplashActivity"
             android:exported="true"

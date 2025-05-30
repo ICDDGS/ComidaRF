@@ -60,6 +60,9 @@ dependencies {
 
     implementation (libs.androidx.core.splashscreen)
 
+    implementation (libs.androidyoutubeplayer.core)
+
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
