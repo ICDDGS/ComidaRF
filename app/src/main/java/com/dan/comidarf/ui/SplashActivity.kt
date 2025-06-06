@@ -12,7 +12,7 @@ class SplashActivity : ComponentActivity() {
 
         super.onCreate(savedInstanceState)
 
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, Login::class.java))
         finish()
     }
 }
