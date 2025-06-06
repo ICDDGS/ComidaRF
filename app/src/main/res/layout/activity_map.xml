@@ -1,0 +1,24 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/map_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="top|start"
+        android:layout_margin="16dp"
+        android:backgroundTint="@android:color/white"
+        android:background="@drawable/rounded_background"
+        android:elevation="8dp"
+        android:padding="10dp"
+        android:src="@drawable/ic_arrow_back"
+        android:contentDescription="Volver" />
+</FrameLayout>

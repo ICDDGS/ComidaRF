@@ -16,7 +16,11 @@ data class ComidaDetailDto(
     @SerializedName("price")
     var price: String? = null,
     @SerializedName("video_url")
-    val video_url: String
+    val video_url: String,
+    @SerializedName("latitude")
+    val latitude: Double,
+    @SerializedName("longitude")
+    val longitude: Double
 
 
 )

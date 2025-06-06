@@ -1,5 +1,6 @@
 package com.dan.comidarf.ui.fragments
 
+import android.content.Intent
 import android.graphics.text.LineBreaker
 import android.os.Build
 import android.os.Bundle
@@ -14,6 +15,7 @@ import com.dan.comidarf.R
 import com.dan.comidarf.application.ComidaRFApp
 import com.dan.comidarf.data.ComidaRepository
 import com.dan.comidarf.databinding.FragmentComidaDetailBinding
+import com.dan.comidarf.ui.MapActivity
 import com.dan.comidarf.utils.Constants
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
@@ -77,19 +79,24 @@ class ComidaDetailFragment : Fragment() {
                             }
                         }
                     )
+
+                    // NUEVO: Botón mapa
+                    btnVerUbicacion.setOnClickListener {
+                        val intent = Intent(requireContext(), MapActivity::class.java)
+                        intent.putExtra("LAT", comidaDetail.latitude)
+                        intent.putExtra("LON", comidaDetail.longitude)
+                        intent.putExtra("TITLE", comidaDetail.title)
+                        startActivity(intent)
+                    }
                 }
-
-
-            }catch (e: Exception){
-             Toast.makeText(requireActivity(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
-            }finally {
+            } catch (e: Exception) {
+                Toast.makeText(requireActivity(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+            } finally {
                 binding.pbLoading.visibility = View.GONE
             }
         }
-
-
-
     }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
